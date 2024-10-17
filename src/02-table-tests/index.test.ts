@@ -1,17 +1,99 @@
 // Uncomment the code below and write your tests
-/* import {  simpleCalculator, Action } from './index';
+import { Action, simpleCalculator } from './index';
 
-const testCases = [
-    { a: 1, b: 2, action: Action.Add, expected: 3 },
-    { a: 2, b: 2, action: Action.Add, expected: 4 },
-    { a: 3, b: 2, action: Action.Add, expected: 5 },
-    // continue cases for other actions    
-]; */
+const a = 10;
+const b = 2;
 
-describe('simpleCalculator', () => {
-  // This test case is just to run this test suite, remove it when you write your own tests
-  test('should blah-blah', () => {
-    expect(true).toBe(true);
+describe('simpleCalculator tests', () => {
+  const testCases = [
+    {
+      a,
+      b,
+      action: Action.Add,
+      expected: 12,
+      description: 'should add two numbers',
+    },
+    {
+      a,
+      b,
+      action: Action.Subtract,
+      expected: 8,
+      description: 'should subtract two numbers',
+    },
+    {
+      a,
+      b,
+      action: Action.Multiply,
+      expected: 20,
+      description: 'should multiply two numbers',
+    },
+    {
+      a,
+      b,
+      action: Action.Divide,
+      expected: 5,
+      description: 'should divide two numbers',
+    },
+    {
+      a,
+      b,
+      action: Action.Exponentiate,
+      expected: 100,
+      description: 'should exponentiate two numbers',
+    },
+    {
+      a,
+      b,
+      action: '',
+      expected: null,
+      description: 'should return null for invalid action',
+    },
+    {
+      a: '10',
+      b,
+      action: Action.Divide,
+      expected: null,
+      description: 'should return null for invalid argument (a is string)',
+    },
+    {
+      a: null,
+      b,
+      action: Action.Divide,
+      expected: null,
+      description: 'should return null for invalid argument (a is null)',
+    },
+    {
+      a: undefined,
+      b,
+      action: Action.Divide,
+      expected: null,
+      description: 'should return null for invalid argument (a is undefined)',
+    },
+    {
+      a,
+      b: '2',
+      action: Action.Divide,
+      expected: null,
+      description: 'should return null for invalid argument (b is string)',
+    },
+    {
+      a,
+      b: null,
+      action: Action.Divide,
+      expected: null,
+      description: 'should return null for invalid argument (b is null)',
+    },
+    {
+      a,
+      b: undefined,
+      action: Action.Divide,
+      expected: null,
+      description: 'should return null for invalid argument (b is undefined)',
+    },
+  ];
+
+  test.each(testCases)('$description', ({ a, b, action, expected }) => {
+    const result = simpleCalculator({ a, b, action });
+    expect(result).toBe(expected);
   });
-  // Consider to use Jest table tests API to test all cases above
 });
