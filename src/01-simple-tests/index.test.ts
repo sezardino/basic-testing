@@ -35,11 +35,42 @@ describe('simpleCalculator tests', () => {
   });
 
   test('should return null for invalid arguments', () => {
-    const result = simpleCalculator({
+    const resultAString = simpleCalculator({
       a: a.toString(),
       b,
       action: Action.Divide,
     });
-    expect(result).toBeNull();
+    expect(resultAString).toBeNull();
+    const resultANull = simpleCalculator({
+      a: null,
+      b,
+      action: Action.Divide,
+    });
+    expect(resultANull).toBeNull();
+    const resultAUndefined = simpleCalculator({
+      a: undefined,
+      b,
+      action: Action.Divide,
+    });
+    expect(resultAUndefined).toBeNull();
+
+    const resultBString = simpleCalculator({
+      b: b.toString(),
+      a,
+      action: Action.Divide,
+    });
+    expect(resultBString).toBeNull();
+    const resultBNull = simpleCalculator({
+      b: null,
+      a,
+      action: Action.Divide,
+    });
+    expect(resultBNull).toBeNull();
+    const resultBUndefined = simpleCalculator({
+      b: undefined,
+      a,
+      action: Action.Divide,
+    });
+    expect(resultBUndefined).toBeNull();
   });
 });
